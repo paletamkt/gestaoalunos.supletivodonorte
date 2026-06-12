@@ -618,40 +618,103 @@
   .closing{
     background:var(--ink);
     color:var(--bg);
-    text-align:center;
-    padding:90px 32px 70px;
+    padding:100px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .closing::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(var(--ink) 0%, var(--ink) 100%),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(217,163,130,0.06) 79px, rgba(217,163,130,0.06) 80px),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(217,163,130,0.06) 79px, rgba(217,163,130,0.06) 80px);
+    pointer-events:none;
+  }
+  .closing::after{
+    content:'';
+    position:absolute;
+    width:520px; height:520px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(181,86,46,0.35), transparent 70%);
+    top:-220px; right:-160px;
+    pointer-events:none;
+  }
+  .closing-inner{
+    position:relative;
+    max-width:920px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width:760px){
+    .closing-inner{ grid-template-columns:1fr; gap:40px; text-align:left; }
+    .closing-divider{ display:none; }
   }
   .closing-logo{
-    height:34px;
-    margin:0 auto 32px;
+    height:30px;
+    margin-bottom:36px;
     display:block;
   }
   .closing h2{
-    font-size:clamp(24px, 4vw, 34px);
-    max-width:640px;
-    margin:0 auto 18px;
+    font-size:clamp(26px, 4vw, 38px);
+    margin-bottom:18px;
     font-weight:400;
+    line-height:1.2;
   }
   .closing p{
     font-size:16px;
     color:#C9C5BC;
-    max-width:520px;
-    margin:0 auto 32px;
+    max-width:460px;
+  }
+  .closing-right{
+    border-left:1px solid #3A3835;
+    padding-left:48px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  @media (max-width:760px){
+    .closing-right{ border-left:none; padding-left:0; border-top:1px solid #3A3835; padding-top:32px; }
+  }
+  .closing-right .eyebrow-small{
+    font-family:-apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#D9A382;
+    font-weight:600;
+  }
+  .closing-right .big-line{
+    font-size:20px;
+    line-height:1.4;
+    color:var(--bg);
   }
   .closing .btn{
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
     background:#D9A382;
     color:var(--ink);
-    padding:14px 32px;
+    padding:15px 30px;
     font-size:13px;
     letter-spacing:0.1em;
     text-transform:uppercase;
     font-weight:600;
     text-decoration:none;
     font-family:-apple-system, 'Helvetica Neue', Arial, sans-serif;
-    transition:opacity .15s;
+    transition:transform .2s ease, box-shadow .2s ease;
+    align-self:flex-start;
   }
-  .closing .btn:hover{ opacity:0.85; }
+  .closing .btn:hover{
+    transform:translateX(4px);
+    box-shadow:0 4px 20px rgba(217,163,130,0.25);
+  }
+  .closing .btn .arrow{ transition:transform .2s ease; }
+  .closing .btn:hover .arrow{ transform:translateX(3px); }
 
   /* Reveal */
   .reveal{
@@ -946,10 +1009,18 @@
 
 <!-- ============ CLOSING / PALETA MKT ============ -->
 <section class="closing reveal">
-  <img src="assets/paleta_ia_branco.png" alt="Paleta IA" class="closing-logo">
-  <h2>Marketing e tecnologia, na mesma direção.</h2>
-  <p>Esse projeto nasce do trabalho que já fazemos juntos — agora com mais uma ferramenta para entender e acompanhar cada aluno do Supletivo do Norte. O próximo passo é simples: me envie as três planilhas e eu te mostro o que a base já revela.</p>
-  <a href="#cta" class="btn">Começar com as planilhas</a>
+  <div class="closing-inner">
+    <div>
+      <img src="assets/paleta_ia_branco.png" alt="Paleta IA" class="closing-logo">
+      <h2>Marketing e tecnologia, na mesma direção.</h2>
+      <p>Esse projeto nasce do trabalho que já fazemos juntos — agora com mais uma ferramenta para entender e acompanhar cada aluno do Supletivo do Norte.</p>
+    </div>
+    <div class="closing-right">
+      <div class="eyebrow-small">Próximo passo</div>
+      <div class="big-line">O próximo passo é simples: me envie as três planilhas e eu te mostro o que a base já revela.</div>
+      <a href="#cta" class="btn">Começar com as planilhas <span class="arrow">→</span></a>
+    </div>
+  </div>
 </section>
 
 <footer>
