@@ -37,7 +37,7 @@
 
   section{
     padding:80px 32px;
-    max-width:760px;
+    max-width:920px;
     margin:0 auto;
   }
 
@@ -49,7 +49,19 @@
     color:var(--accent);
     font-weight:600;
     margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:14px;
   }
+  .label::before{
+    content:'';
+    display:block;
+    width:32px;
+    height:1px;
+    background:var(--accent);
+    opacity:0.5;
+  }
+  .hero .label::before{ background:var(--ink-soft); }
 
   /* ============ HERO ============ */
   .hero{
@@ -171,8 +183,22 @@
     margin-bottom:36px;
     padding-bottom:36px;
     border-bottom:1px solid var(--line);
+    display:flex;
+    gap:24px;
+    transition:padding-left .25s ease;
   }
   .problem-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .problem-block:hover{ padding-left:8px; }
+  .problem-icon{
+    font-size:26px;
+    color:var(--accent);
+    flex-shrink:0;
+    width:36px;
+    line-height:1.3;
+    transition:transform .25s ease;
+  }
+  .problem-block:hover .problem-icon{ transform:translateX(4px); }
+  .problem-body{ flex:1; }
   .problem-block .num{
     font-family:-apple-system, 'Helvetica Neue', Arial, sans-serif;
     font-size:13px;
@@ -193,12 +219,21 @@
   /* ============ FLOW ============ */
   .flow-step{
     display:grid;
-    grid-template-columns:1fr;
-    gap:8px;
+    grid-template-columns:48px 1fr;
+    gap:20px;
     padding:28px 0;
     border-bottom:1px solid var(--line);
+    transition:padding-left .25s ease;
   }
   .flow-step:first-of-type{ border-top:1px solid var(--line); }
+  .flow-step:hover{ padding-left:8px; }
+  .flow-icon{
+    font-size:24px;
+    color:var(--accent);
+    line-height:1.4;
+    transition:transform .25s ease;
+  }
+  .flow-step:hover .flow-icon{ transform:translateX(4px); }
   .flow-step .step-label{
     font-family:-apple-system, 'Helvetica Neue', Arial, sans-serif;
     font-size:12px;
@@ -473,15 +508,26 @@
   }
   .future-item{
     display:grid;
-    grid-template-columns:160px 1fr;
-    gap:24px;
+    grid-template-columns:40px 140px 1fr;
+    gap:20px;
+    align-items:start;
     padding:22px 0;
     border-bottom:1px solid var(--line);
+    transition:padding-left .25s ease;
   }
   .future-item:first-child{ border-top:1px solid var(--line); }
-  @media (max-width:560px){
-    .future-item{ grid-template-columns:1fr; gap:6px; }
+  .future-item:hover{ padding-left:8px; }
+  @media (max-width:620px){
+    .future-item{ grid-template-columns:32px 1fr; gap:14px; }
+    .future-item .tag{ grid-column:2; order:1; }
+    .future-item .future-body{ grid-column:2; order:2; }
   }
+  .future-icon{
+    font-size:22px;
+    color:var(--accent);
+    transition:transform .25s ease;
+  }
+  .future-item:hover .future-icon{ transform:translateX(4px); }
   .future-item .tag{
     font-family:-apple-system, 'Helvetica Neue', Arial, sans-serif;
     font-size:11px;
@@ -527,12 +573,21 @@
     align-items:flex-start;
     gap:16px;
   }
-  .cta-num{
-    font-family:Georgia, serif;
-    font-size:20px;
+  .cta-icon{
+    font-size:18px;
     color:#D9A382;
     flex-shrink:0;
     width:28px;
+    text-align:center;
+    line-height:1.4;
+  }
+  .cta-num{
+    font-family:Georgia, serif;
+    font-size:14px;
+    color:#A6A29A;
+    flex-shrink:0;
+    width:20px;
+    padding-top:3px;
   }
   .cta-item-text strong{ display:block; font-size:15px; margin-bottom:3px; font-family:Georgia, serif; }
   .cta-item-text span{ font-size:13px; color:#A6A29A; }
@@ -652,15 +707,21 @@
   <p class="section-lead">Cada planilha semanal é uma fotografia isolada. Sem juntar essas fotografias ao longo do tempo, dois grupos de alunos ficam invisíveis.</p>
 
   <div class="problem-block">
-    <div class="num sans">01</div>
-    <h3>Quem está quase concluindo passa despercebido</h3>
-    <p>Um aluno a uma ou duas provas do certificado é, hoje, indistinguível de qualquer outro nome numa planilha. Sem visão acumulada do progresso, não existe um "empurrão final" — e o aluno só some.</p>
+    <div class="problem-icon">◐</div>
+    <div class="problem-body">
+      <div class="num sans">01</div>
+      <h3>Quem está quase concluindo passa despercebido</h3>
+      <p>Um aluno a uma ou duas provas do certificado é, hoje, indistinguível de qualquer outro nome numa planilha. Sem visão acumulada do progresso, não existe um "empurrão final" — e o aluno só some.</p>
+    </div>
   </div>
 
   <div class="problem-block">
-    <div class="num sans">02</div>
-    <h3>O aluno que certifica desaparece</h3>
-    <p>O Supletivo tem um ciclo de cliente rápido: ao concluir, o aluno deixa de precisar do serviço. Sem um registro do que ele já conquistou, não há como saber quem são esses ex-alunos nem como reabrir contato no momento certo.</p>
+    <div class="problem-icon">◑</div>
+    <div class="problem-body">
+      <div class="num sans">02</div>
+      <h3>O aluno que certifica desaparece</h3>
+      <p>O Supletivo tem um ciclo de cliente rápido: ao concluir, o aluno deixa de precisar do serviço. Sem um registro do que ele já conquistou, não há como saber quem são esses ex-alunos nem como reabrir contato no momento certo.</p>
+    </div>
   </div>
 </section>
 
@@ -671,22 +732,31 @@
   <p class="section-lead">A ideia não muda o seu trabalho — muda o que acontece depois dele. As mesmas três planilhas semanais passam a alimentar um perfil contínuo de cada aluno, identificado pelo CPF.</p>
 
   <div class="flow-step">
-    <div class="step-label sans">Ponto de partida</div>
-    <h3>Arquivos simples, no formato que já existe</h3>
-    <p>Quem fez prova, quem foi aprovado, quem solicitou certificado — três planilhas semanais simples, no formato que o Supletivo já tem disponível, sem necessidade de nenhum sistema novo do lado de vocês.</p>
+    <div class="flow-icon">⊞</div>
+    <div>
+      <div class="step-label sans">Ponto de partida</div>
+      <h3>Arquivos simples, no formato que já existe</h3>
+      <p>Quem fez prova, quem foi aprovado, quem solicitou certificado — três planilhas semanais simples, no formato que o Supletivo já tem disponível, sem necessidade de nenhum sistema novo do lado de vocês.</p>
+    </div>
   </div>
 
   <div class="flow-step">
-    <div class="step-label sans">A mudança</div>
-    <h3>Cada aluno passa a ter um perfil único</h3>
-    <p>Identificado pelo CPF, mesmo quando aparece com telefones diferentes ao longo do tempo. O perfil acumula: disciplinas já aprovadas, disciplinas pendentes, contatos mais recentes, certificados já emitidos.</p>
-    <span class="note sans">nada se perde de uma semana para outra</span>
+    <div class="flow-icon">◈</div>
+    <div>
+      <div class="step-label sans">A mudança</div>
+      <h3>Cada aluno passa a ter um perfil único</h3>
+      <p>Identificado pelo CPF, mesmo quando aparece com telefones diferentes ao longo do tempo. O perfil acumula: disciplinas já aprovadas, disciplinas pendentes, contatos mais recentes, certificados já emitidos.</p>
+      <span class="note sans">nada se perde de uma semana para outra</span>
+    </div>
   </div>
 
   <div class="flow-step">
-    <div class="step-label sans">Com o tempo</div>
-    <h3>A base cresce junto com o Supletivo</h3>
-    <p>A cada importação semanal, a visão geral fica mais completa — não só de cada aluno individualmente, mas da instituição como um todo.</p>
+    <div class="flow-icon">↗</div>
+    <div>
+      <div class="step-label sans">Com o tempo</div>
+      <h3>A base cresce junto com o Supletivo</h3>
+      <p>A cada importação semanal, a visão geral fica mais completa — não só de cada aluno individualmente, mas da instituição como um todo.</p>
+    </div>
   </div>
 </section>
 
@@ -808,22 +878,25 @@
 
   <div class="future-list">
     <div class="future-item">
+      <div class="future-icon">▤</div>
       <div class="tag sans">possibilidade futura</div>
-      <div>
+      <div class="future-body">
         <h4>Desempenho por disciplina</h4>
         <p>Quais matérias têm maior taxa de reprovação — útil para orientar conteúdo educativo no Instagram.</p>
       </div>
     </div>
     <div class="future-item">
+      <div class="future-icon">◷</div>
       <div class="tag sans">possibilidade futura</div>
-      <div>
+      <div class="future-body">
         <h4>Tempo entre provas</h4>
         <p>Quanto tempo, em média, um aluno leva entre uma prova e outra — sinal de quando alguém está "esfriando".</p>
       </div>
     </div>
     <div class="future-item">
+      <div class="future-icon">⤷</div>
       <div class="tag sans">possibilidade futura</div>
-      <div>
+      <div class="future-body">
         <h4>Listas prontas para campanha</h4>
         <p>Exportações já cruzando critérios — ex: "faltam 1-2 provas e sem contato há 30 dias" — direto para o WhatsApp.</p>
       </div>
@@ -841,6 +914,7 @@
     <h3>O que eu preciso de você</h3>
     <div class="cta-list">
       <div class="cta-item">
+        <div class="cta-icon">📋</div>
         <div class="cta-num">1</div>
         <div class="cta-item-text">
           <strong>Planilha de provas realizadas</strong>
@@ -848,6 +922,7 @@
         </div>
       </div>
       <div class="cta-item">
+        <div class="cta-icon">✓</div>
         <div class="cta-num">2</div>
         <div class="cta-item-text">
           <strong>Planilha de aprovações</strong>
@@ -855,6 +930,7 @@
         </div>
       </div>
       <div class="cta-item">
+        <div class="cta-icon">🎓</div>
         <div class="cta-num">3</div>
         <div class="cta-item-text">
           <strong>Planilha de solicitações de certificado</strong>
